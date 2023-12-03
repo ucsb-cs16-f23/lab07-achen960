@@ -1,5 +1,6 @@
 #include "linkedListFuncs.h"
 #include <stddef.h>
+#include <iostream>
 
 using namespace std;
 
@@ -140,7 +141,14 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
  * Return &head of 1 -> 4 -> 2 -> 5 -> 3 -> 6
  */
 Node* recursiveSplice(Node *head1, Node *head2) {
-    
+    Node *temp = new Node;
+    temp = head2->next;
+    head2->next = head1->next;
+    head1->next = head2;
+    head2 = temp;
+    if(head2 != NULL){
+        head1->next->next = recursiveSplice(head1->next->next, head2);
+    } 
     return head1;
     //STUB: edit with the correct output, according to the lab instructions, using recursion
 }
