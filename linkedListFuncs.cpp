@@ -116,14 +116,16 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
     if(head1 != NULL && head2 != NULL){
         temp->data = head1->data + head2->data;
         temp->next = recursiveElementwiseSum(head1->next, head2->next);
+        return temp;
     } else if(head1 != NULL){
         temp->data = head1->data;
         temp->next = recursiveElementwiseSum(head1->next, NULL);
+        return temp;
     } else{
         temp->data = head2->data;
         temp->next = recursiveElementwiseSum(NULL, head1->next);
+        return temp;
     }
-    return temp;
     //STUB: edit with the correct output, according to the lab instructions, using recursion
 }
 
