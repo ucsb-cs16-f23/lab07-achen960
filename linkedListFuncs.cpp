@@ -110,22 +110,18 @@ Node* recursiveRemoveKFromFront(Node *head, int k) {
  */
 Node* recursiveElementwiseSum(Node *head1, Node *head2) {
     Node *temp = new Node;
-    Node *none = new Node;
-    
-    if(head1 == NULL){
-        temp->data = head2->data;
-    } else if(head2 == NULL){
-        temp->data = head1->data;
-    } else{
-        temp->data = head1->data + head2->data;
+    if(head1 == NULL && head2 == NULL){
+        return NULL;
     }
-    
-    if(head1->next != NULL && head2->next == NULL){
-        temp->next = recursiveElementwiseSum(head1->next, none);
-    } else if(head1->next == NULL && head2->next != NULL){
-        temp->next = recursiveElementwiseSum(none, head2->next);
-    } else if(head1->next != NULL && head2->next != NULL){
+    if(head1 != NULL && head2 != NULL){
+        temp->data = head1->data + head2->data;
         temp->next = recursiveElementwiseSum(head1->next, head2->next);
+    } else if(head1 != NULL){
+        temp->data = head1->data;
+        temp->next = recursiveElementwiseSum(head1->next, NULL);
+    } else{
+        temp->data = head2->data;
+        temp->next = recursiveElementwiseSum(NULL, head1->next);
     }
     return temp;
     //STUB: edit with the correct output, according to the lab instructions, using recursion
