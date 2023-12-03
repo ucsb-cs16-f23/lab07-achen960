@@ -1,6 +1,5 @@
 #include "strFuncs.h"
 #include <cctype>
-#include <iostream>
 
 using namespace std;
 
