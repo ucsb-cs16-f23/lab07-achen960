@@ -47,6 +47,9 @@ int recursiveLargestValue(Node* head) {
  * Return &n3
  */
 Node* recursiveFindKthNode(Node *head, int k){
+    if(k<=0){
+        return NULL;
+    }
     if(k!=1){
         return recursiveFindKthNode(head->next, k-1);
     } else{
@@ -114,7 +117,13 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
     Node *temp = new Node;
     Node *none = new Node;
     
-    temp->data = head1->data + head2->data;
+    if(head1 == NULL){
+        temp->data = head2->data;
+    } else if(head2 == NULL){
+        temp->data = head1->data;
+    } else{
+        temp->data = head1->data + head2->data;
+    }
     
     if(head1->next != NULL && head2->next == NULL){
         temp->next = recursiveElementwiseSum(head1->next, none);
