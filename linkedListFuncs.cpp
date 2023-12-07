@@ -140,7 +140,7 @@ Node* recursiveElementwiseSum(Node *head1, Node *head2) {
  * Return &head of 1 -> 4 -> 2 -> 5 -> 3 -> 6
  */
 Node* recursiveSplice(Node *head1, Node *head2) {
-    if(head2 != NULL){
+    if(head2 != NULL && head1 != NULL){
         Node *temp = new Node;
         temp = head2->next;
         head2->next = head1->next;
