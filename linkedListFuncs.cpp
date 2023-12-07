@@ -146,12 +146,12 @@ Node* recursiveSplice(Node *head1, Node *head2) {
         head2->next = head1->next;
         head1->next = head2;
         head2 = temp;
+        head1->next->next = recursiveSplice(head1->next->next, head2);
     } else{
         return head1;
     }
-    if(head2 != NULL){
-        head1->next->next = recursiveSplice(head1->next->next, head2);
-    } 
+    
     return head1;
+   
     //STUB: edit with the correct output, according to the lab instructions, using recursion
 }
